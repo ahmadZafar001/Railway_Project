@@ -1,0 +1,12 @@
+  <div class="container nested-fields">
+      
+      <div class="field">
+        <%= f.label :compartment_id %><br>
+        <%= f.select :compartment_id, options_for_select(Compartment.all.map{|x| [x.name, x.id]}) %>
+      </div>
+      <div class="field">
+        <%= f.label :available_seats %><br>
+        <%= f.number_field :available_seats %>
+      </div>
+      <%= link_to_remove_association "Remove this compartment".html_safe, f,class:"btn btn-link", style:"margin-top:18px;" %>
+  </div>

@@ -1,0 +1,44 @@
+<%= form_for(@train) do |f| %>
+  <% if @train.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@train.errors.count, "error") %> prohibited this train from being saved:</h2>
+
+      <ul>
+      <% @train.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.select :staff_id, options_for_select(Staff.all.map{|x| [x.name, x.id]}),{required: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name,required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :train_type, Train.train_types.keys.to_a, { label: "Select Type of Train",include_blank: true }, {required: true} %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :availibility %><br>
+    <%= f.check_box :availibility,required: true %>
+  </div>
+
+  <div  id="train_compartments">
+    <%= f.fields_for :train_compartments do |compartment|%>
+      <%= render "train_compartment_fields",f: compartment %>
+    <%end %>
+  </div>
+  <div class="links mb-lg">
+    <%= link_to_add_association "<i class='fa fa-plus'></i> Add another Compartment".html_safe, f, :train_compartments, class:"btn btn-link" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

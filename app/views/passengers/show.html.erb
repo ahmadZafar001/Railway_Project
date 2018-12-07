@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @passenger.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @passenger.lname %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @passenger.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @passenger.gender %>
+</p>
+
+<p>
+  <strong>Cnic:</strong>
+  <%= @passenger.cnic %>
+</p>
+
+<%= link_to 'Edit', edit_passenger_path(@passenger) %> |
+<%= link_to 'Back', passengers_path %>

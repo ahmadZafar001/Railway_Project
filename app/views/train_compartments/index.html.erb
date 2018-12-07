@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Train Compartments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Train</th>
+      <th>Compartment</th>
+      <th>Available seats</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @train_compartments.each do |train_compartment| %>
+      <tr>
+        <td><%= train_compartment.train %></td>
+        <td><%= train_compartment.compartment %></td>
+        <td><%= train_compartment.available_seats %></td>
+        <td><%= link_to 'Show', train_compartment %></td>
+        <td><%= link_to 'Edit', edit_train_compartment_path(train_compartment) %></td>
+        <td><%= link_to 'Destroy', train_compartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Train compartment', new_train_compartment_path %>

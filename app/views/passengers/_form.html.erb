@@ -1,0 +1,47 @@
+<%= form_for(@passenger) do |f| %>
+  <% if @passenger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@passenger.errors.count, "error") %> prohibited this passenger from being saved:</h2>
+
+      <ul>
+      <% @passenger.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :cnic %><br>
+    <%= f.text_field :cnic %>
+  </div>
+  
+  <div id="passenger_contacts">
+    <%= f.fields_for :passenger_contacts do |contact|%>
+      <%= render "passenger_contact_fields",f: contact%>
+    <% end %>
+  </div>
+  <div class="links mb-lg">
+    <%= link_to_add_association "<i class='fa fa-plus'></i> Add another Phone Number".html_safe, f, :passenger_contacts, class:"btn btn-link" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

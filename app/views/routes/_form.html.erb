@@ -1,0 +1,26 @@
+<%= form_for(@route) do |f| %>
+  <% if @route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+      <ul>
+      <% @route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :source_id %><br>
+    <%= f.select :source_id, options_for_select(Station.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_id %><br>
+    <%= f.select :destination_id, options_for_select(Station.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="actions mt-4">
+    <%= link_to 'Cancel', routes_path %>
+    <%= f.submit "Add Route" %>
+  </div>
+<% end %>

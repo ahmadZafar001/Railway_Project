@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Journeys</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Train</th>
+      <th>Route</th>
+      <th>Staff</th>
+      <th>Passenger count</th>
+      <th>Departure time</th>
+      <th>Arrival time</th>
+      <th colspan="3"><%= link_to 'New Journey', new_journey_path %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journeys.each do |journey| %>
+      <tr>
+        <td><%= journey.train.name %></td>
+        <td><%= journey.route.name %></td>
+        <td><%= journey.staff.name %></td>
+        <td><%= journey.pass_count %></td>
+        <td><%= journey.dep_time %></td>
+        <td><%= journey.arr_time %></td>
+        <td><%= link_to 'Edit', edit_journey_path(journey) %></td>
+        <td><%= link_to 'Destroy', journey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

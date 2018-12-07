@@ -1,0 +1,51 @@
+<%= form_for(@staff) do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "CNIC" %><br>
+    <%= f.number_field :cnic,required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname,required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname,required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender, options_for_select([["Select One", nil], "Male", "Female"]),{},{required: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.select :role, options_for_select([["Select One", nil], "Driver", "Manager"]),{},{required: true} %>
+  </div>
+  
+  <div  id="staff_contacts">
+    <%= f.fields_for :staff_contacts do |contact|%>
+      <%= render "staff_contact_fields",f: contact %>
+    <%end %>
+  </div>
+  <div class="links mb-lg">
+    <%= link_to_add_association "<i class='fa fa-plus'></i> Add another contact".html_safe, f, :staff_contacts, class:"btn btn-link" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

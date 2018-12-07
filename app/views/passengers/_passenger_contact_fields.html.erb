@@ -1,0 +1,7 @@
+<div class="container nested-fields">
+    <div class="field">
+        <%= f.label :phone_number %><br>
+        <%= f.number_field :phone_number %>
+    </div>
+    <%= link_to_remove_association "Remove this Phone Number".html_safe, f,class:"btn btn-link"%>
+</div>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @compartment.name %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @compartment.capacity %>
+</p>
+
+<%= link_to 'Edit', edit_compartment_path(@compartment) %> |
+<%= link_to 'Back', compartments_path %>

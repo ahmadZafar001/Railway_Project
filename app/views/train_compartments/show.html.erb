@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Train:</strong>
+  <%= @train_compartment.train %>
+</p>
+
+<p>
+  <strong>Compartment:</strong>
+  <%= @train_compartment.compartment %>
+</p>
+
+<p>
+  <strong>Available seats:</strong>
+  <%= @train_compartment.available_seats %>
+</p>
+
+<%= link_to 'Edit', edit_train_compartment_path(@train_compartment) %> |
+<%= link_to 'Back', train_compartments_path %>

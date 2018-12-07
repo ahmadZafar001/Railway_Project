@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Train compartment:</strong>
+  <%= @fare.train_compartment.name %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @fare.route.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @fare.amount %>
+</p>
+
+<%= link_to 'Edit', edit_fare_path(@fare) %> |
+<%= link_to 'Back', fares_path %>

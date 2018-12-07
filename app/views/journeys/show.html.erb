@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Train:</strong>
+  <%= @journey.train.name %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @journey.route.name %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @journey.staff.name %>
+</p>
+
+<p>
+  <strong>Passenger count:</strong>
+  <%= @journey.pass_count %>
+</p>
+
+<p>
+  <strong>Departure time:</strong>
+  <%= @journey.dep_time %>
+</p>
+
+<p>
+  <strong>Arrival time:</strong>
+  <%= @journey.arr_time %>
+</p>
+
+<%= link_to 'Edit', edit_journey_path(@journey) %> |
+<%= link_to 'Back', journeys_path %>

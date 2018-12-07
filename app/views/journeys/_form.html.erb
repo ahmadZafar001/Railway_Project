@@ -1,0 +1,41 @@
+<%= form_for(@journey) do |f| %>
+  <% if @journey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journey.errors.count, "error") %> prohibited this journey from being saved:</h2>
+
+      <ul>
+      <% @journey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :train_id %><br>
+    <%= f.select :train_id, options_for_select(Train.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :route_id %><br>
+    <%= f.select :route_id, options_for_select(Route.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :staff_id %><br>
+    <%= f.select :staff_id, options_for_select(Staff.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :passenger_count %><br>
+    <%= f.number_field :pass_count %>
+  </div>
+  <div class="field">
+    <%= f.label :departure_time %><br>
+    <%= f.datetime_select :dep_time %>
+  </div>
+  <div class="field">
+    <%= f.label :arrival_time %><br>
+    <%= f.datetime_select :arr_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

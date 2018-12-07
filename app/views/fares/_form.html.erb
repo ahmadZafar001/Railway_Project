@@ -1,0 +1,29 @@
+<%= form_for(@fare) do |f| %>
+  <% if @fare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fare.errors.count, "error") %> prohibited this fare from being saved:</h2>
+
+      <ul>
+      <% @fare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :train_compartment_id %><br>
+    <%= f.select :train_compartment_id, options_for_select(TrainCompartment.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :route_id %><br>
+    <%= f.select :route_id, options_for_select(Route.all.map{|x| [x.name, x.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
